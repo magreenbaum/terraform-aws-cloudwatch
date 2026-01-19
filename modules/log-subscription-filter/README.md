@@ -5,14 +5,14 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.81 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.28 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.81 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.28 |
 
 ## Modules
 
@@ -28,9 +28,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_apply_on_transformed_logs"></a> [apply\_on\_transformed\_logs](#input\_apply\_on\_transformed\_logs) | Boolean to indicate whether to apply the subscription filter on the transformed version of the log events instead of the original ingested log events. Defaults to `false`. Valid only for log groups that have an active log transformer | `bool` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the Cloudwatch log stream | `bool` | `true` | no |
 | <a name="input_destination_arn"></a> [destination\_arn](#input\_destination\_arn) | The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN | `string` | `null` | no |
 | <a name="input_distribution"></a> [distribution](#input\_distribution) | The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution | `string` | `null` | no |
+| <a name="input_emit_system_fields"></a> [emit\_system\_fields](#input\_emit\_system\_fields) | List of system fields to include in the log events sent to the subscription destination. These fields provide source information for centralized log data in the forwarded payload. Valid values: `@aws.account`, `@aws.region`. To remove this argument after it has been set, specify an empty list `[]` explicitly to avoid perpetual differences | `list(string)` | `null` | no |
 | <a name="input_filter_pattern"></a> [filter\_pattern](#input\_filter\_pattern) | A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events. Use empty string to match everything | `string` | `""` | no |
 | <a name="input_log_group_name"></a> [log\_group\_name](#input\_log\_group\_name) | The name of the log group to associate the subscription filter with | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | A name for the log stream | `string` | `null` | no |
